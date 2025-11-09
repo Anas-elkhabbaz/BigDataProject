@@ -1,0 +1,8 @@
+﻿name: "irrigation"
+version: "1.0.0"
+config-version: 2
+profile: "irrigation"
+model-paths: ["models"]
+models:
+  irrigation:
+    +materialized: view

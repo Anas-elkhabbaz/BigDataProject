@@ -1,0 +1,12 @@
+﻿# transform/profiles/duckdb/profiles.yml
+irrigation:                    # <-- must match the "profile:" name in transform/dbt_project.yml
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: "{{ env_var('MELTANO_PROJECT_ROOT') }}/warehouse/irrigation.duckdb"
+      schema: main             # DBT schema (DuckDB namespace). "main" is fine.
+      threads: 4
+      # Optional, but handy:
+      # extensions: [httpfs, parquet]
+      # use_exported_paths: true

@@ -1,0 +1,11 @@
+﻿version: 2
+
+models:
+  - name: mart_weather_features
+    description: Rolling weather features and a basic irrigation recommendation.
+    columns:
+      - name: date
+        tests: [not_null, unique]
+      - name: prcp_7d
+      - name: tavg_7d
+      - name: irrigation_needed

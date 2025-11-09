@@ -1,0 +1,95 @@
+﻿default_environment: dev
+project_id: 019a5edb-9ad2-7f99-9971-bcd2c413e4ec
+
+environments:
+  - name: dev
+  - name: staging
+  - name: prod
+
+plugins:
+  extractors:
+    - name: tap-rest-api-msdk
+      variant: widen
+      namespace: tap_rest_api_msdk
+      pip_url: tap-rest-api-msdk==1.4.2
+      config:
+        auth_type: "none"
+        api_url: "https://meteostat.p.rapidapi.com"
+        rate_limit:
+          max_per_second: "4"
+        streams:
+          - name: weather_daily
+            path: /point/daily
+            headers:
+              x-rapidapi-key: ${METEOSTAT_KEY}
+              x-rapidapi-host: meteostat.p.rapidapi.com
+            params:
+              lat: ${LAT}
+              lon: ${LON}
+              start: ${START}
+              end: ${END}
+              tz: ${TZ}
+            records_path: $.data[*]
+            schema:
+              primary_key: ["date","lat","lon"]
+              properties:
+                date: {type: ["string"]}
+                tavg: {type: ["number","null"]}
+                tmin: {type: ["number","null"]}
+                tmax: {type: ["number","null"]}
+                prcp: {type: ["number","null"]}
+                snow: {type: ["number","null"]}
+                wdir: {type: ["number","null"]}
+                wspd: {type: ["number","null"]}
+                wpgt: {type: ["number","null"]}
+                pres: {type: ["number","null"]}
+                tsun: {type: ["number","null"]}
+                lat:  {type: ["string","number","null"]}
+                lon:  {type: ["string","number","null"]}
+
+  loaders:
+    - name: target-csv
+      variant: meltanolabs
+      pip_url: meltanolabs-target-csv
+      config:
+        destination_path: "./raw"
+        # keep a stable filename for dbt and the cleaner
+        add_timestamp_prefix: "false"
+        delimiter: ","
+
+  utilities:
+    - name: dbt-duckdb
+      variant: jwills
+      pip_url: dbt-core dbt-duckdb meltano-dbt-ext~=0.3.0
+      env:
+        DBT_PROFILES_DIR: "C:/Users/Lenovo/Desktop/BigDataProject/irrigation/transform/profiles/duckdb"
+        DBT_TARGET_PATH: "C:/Users/Lenovo/Desktop/BigDataProject/irrigation/transform/target"
+      settings:
+        - name: project_dir
+          value: "C:/Users/Lenovo/Desktop/BigDataProject/irrigation/transform"
+        - name: profiles_dir
+          value: "C:/Users/Lenovo/Desktop/BigDataProject/irrigation/transform/profiles/duckdb"
+        - name: skip_pre_invoke
+          value: "true"
+
+    # NEW: tiny utility to run our Python cleaner
+    - name: weather-tools
+      namespace: weather_tools
+      executable: python
+      commands:
+        clean-csv:
+          args: "scripts/clean_csv.py ./raw/weather_daily.csv"
+
+
+# NEW: a project-level setting to point at the CSV we clean
+settings:
+  - name: RAW_WEATHER_CSV
+    value: "./raw/weather_daily.csv"
+
+# NEW: chain the three steps
+jobs:
+  - name: extract_clean_build
+    tasks:
+      - tap-rest-api-msdk target-csv
+      - weather-tools:clean-csv
+      - dbt-duckdb:run
