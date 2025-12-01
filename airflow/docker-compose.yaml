@@ -1,0 +1,105 @@
+version: "3.8"
+
+services:
+  postgres:
+    image: postgres:14
+    environment:
+      POSTGRES_USER: airflow
+      POSTGRES_PASSWORD: airflow
+      POSTGRES_DB: airflow
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - airflow-net
+
+  airflow-init:
+    image: apache/airflow:2.10.2
+    depends_on:
+      - postgres
+    environment:
+      AIRFLOW__CORE__EXECUTOR: LocalExecutor
+      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres/airflow
+      AIRFLOW__CORE__LOAD_EXAMPLES: "False"
+      AIRFLOW__CORE__FERNET_KEY: "kqKTew9WScdW94EHUDEP3KP4_g6axsh6J7GJWmnjg1s="
+      _AIRFLOW_WWW_USER_USERNAME: airflow
+      _AIRFLOW_WWW_USER_PASSWORD: airflow
+    entrypoint: >
+      bash -c "airflow db init &&
+               airflow users create --username airflow --password airflow
+               --firstname Air --lastname Flow --role Admin --email airflow@example.com || true"
+    networks:
+      - airflow-net
+
+  dbt-docs:
+    image: anaselkhabbaz/irrigation-etl:latest
+    container_name: airflow-dbt-docs-1
+    working_dir: /app
+    volumes:
+      - ../:/app
+    env_file:
+      - ../.env
+    environment:
+      - MELTANO_PROJECT_ROOT=/app
+    command: >
+      bash -lc "cd /app &&
+      meltano --environment=dev invoke dbt-duckdb:docs-generate &&
+      cd transform/transform/target &&
+      python -m http.server 8080"
+    ports:
+      - "8081:8080"
+    depends_on:
+      - postgres
+
+
+  airflow-webserver:
+    image: apache/airflow:2.10.2
+    depends_on:
+      - postgres
+      - airflow-init
+    restart: always
+    environment:
+      AIRFLOW__CORE__EXECUTOR: LocalExecutor
+      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres/airflow
+      AIRFLOW__CORE__LOAD_EXAMPLES: "False"
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./dags:/opt/airflow/dags
+      - ./logs:/opt/airflow/logs
+      - ./plugins:/opt/airflow/plugins
+      # Pour DockerOperator : accès au daemon Docker de l’hôte
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: webserver
+    networks:
+      - airflow-net
+    env_file:
+      - ../.env
+
+  airflow-scheduler:
+    image: apache/airflow:2.10.2
+    depends_on:
+      - postgres
+      - airflow-init
+    restart: always
+    environment:
+      AIRFLOW__CORE__EXECUTOR: LocalExecutor
+      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres/airflow
+      AIRFLOW__CORE__LOAD_EXAMPLES: "False"
+    volumes:
+      - ./dags:/opt/airflow/dags
+      - ./logs:/opt/airflow/logs
+      - ./plugins:/opt/airflow/plugins
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: scheduler
+    networks:
+      - airflow-net
+    env_file:
+      - ../.env
+  
+
+
+volumes:
+  postgres_data:
+
+networks:
+  airflow-net:

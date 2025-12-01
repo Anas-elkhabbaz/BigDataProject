@@ -1,0 +1,235 @@
+[2025-11-30T19:42:48.868+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-11-30T19:42:48.893+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: meltano_irrigation_etl.run_meltano_etl manual__2025-11-30T19:42:47.843705+00:00 [queued]>
+[2025-11-30T19:42:48.904+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: meltano_irrigation_etl.run_meltano_etl manual__2025-11-30T19:42:47.843705+00:00 [queued]>
+[2025-11-30T19:42:48.910+0000] {taskinstance.py:2865} INFO - Starting attempt 1 of 2
+[2025-11-30T19:42:48.927+0000] {taskinstance.py:2888} INFO - Executing <Task(DockerOperator): run_meltano_etl> on 2025-11-30 19:42:47.843705+00:00
+[2025-11-30T19:42:48.937+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'meltano_irrigation_etl', 'run_meltano_etl', 'manual__2025-11-30T19:42:47.843705+00:00', '--job-id', '3', '--raw', '--subdir', 'DAGS_FOLDER/meltano_etl_dag.py', '--cfg-path', '/tmp/tmp3jspin1s']
+[2025-11-30T19:42:48.942+0000] {standard_task_runner.py:105} INFO - Job 3: Subtask run_meltano_etl
+[2025-11-30T19:42:48.943+0000] {logging_mixin.py:190} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:70 DeprecationWarning: This process (pid=197) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2025-11-30T19:42:48.944+0000] {standard_task_runner.py:72} INFO - Started process 198 to run task
+[2025-11-30T19:42:49.031+0000] {task_command.py:467} INFO - Running <TaskInstance: meltano_irrigation_etl.run_meltano_etl manual__2025-11-30T19:42:47.843705+00:00 [running]> on host bcf6e1894e0d
+[2025-11-30T19:42:49.150+0000] {taskinstance.py:3131} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='anaselkhabbaz' AIRFLOW_CTX_DAG_ID='meltano_irrigation_etl' AIRFLOW_CTX_TASK_ID='run_meltano_etl' AIRFLOW_CTX_EXECUTION_DATE='2025-11-30T19:42:47.843705+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-11-30T19:42:47.843705+00:00'
+[2025-11-30T19:42:49.151+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-11-30T19:42:49.255+0000] {docker.py:367} INFO - Starting docker container from image anaselkhabbaz/irrigation-etl:latest
+[2025-11-30T19:42:52.471+0000] {docker.py:438} INFO - [2m2025-11-30T19:42:52.469275Z[0m [[32m[1minfo     [0m] [1mEnvironment 'dev' is active   [0m
+[2025-11-30T19:43:05.774+0000] {docker.py:438} INFO - [2m2025-11-30T19:43:05.772530Z[0m [[33m[1mwarning  [0m] [1mA new version of Meltano is available (v4.0.6) and you are currently running v4.0.5. For more information, visit: https://docs.meltano.com/getting-started/installation.[0m
+[2025-11-30T19:43:06.229+0000] {docker.py:438} INFO - [2m2025-11-30T19:43:06.228047Z[0m [[32m[1minfo     [0m] [1mInstalling extractor 'tap-rest-api-msdk'[0m
+[2025-11-30T19:43:06.244+0000] {docker.py:438} INFO - [2m2025-11-30T19:43:06.243142Z[0m [[32m[1minfo     [0m] [1mInstalling loader 'target-csv'[0m
+[2025-11-30T19:43:06.266+0000] {docker.py:438} INFO - [2m2025-11-30T19:43:06.264699Z[0m [[32m[1minfo     [0m] [1mInstalling extractor 'tap-weatherapi-forecast'[0m
+[2025-11-30T19:43:06.293+0000] {docker.py:438} INFO - [2m2025-11-30T19:43:06.291869Z[0m [[32m[1minfo     [0m] [1mInstalling utility 'weather-tools'[0m
+[2025-11-30T19:43:06.317+0000] {docker.py:438} INFO - [2m2025-11-30T19:43:06.315819Z[0m [[32m[1minfo     [0m] [1mInstalling utility 'dbt-duckdb'[0m
+[2025-11-30T19:45:13.994+0000] {docker.py:438} INFO - [2m2025-11-30T19:45:13.990913Z[0m [[32m[1minfo     [0m] [1mInstalled loader 'target-csv' [0m
+[2025-11-30T19:47:49.465+0000] {docker.py:438} INFO - [2m2025-11-30T19:47:49.463389Z[0m [[32m[1minfo     [0m] [1mInstalled extractor 'tap-rest-api-msdk'[0m
+[2025-11-30T19:49:32.550+0000] {docker.py:438} INFO - [31m╭─[0m[31m────────────────────────────[0m[31m Installation error [0m[31m────────────────────────────[0m[31m─╮[0m
+[2025-11-30T19:49:32.551+0000] {docker.py:438} INFO - [31m│[0m Using Python 3.13.9 environment at: .meltano/utilities/weather-tools/venv    [31m│[0m
+[2025-11-30T19:49:32.552+0000] {docker.py:438} INFO - [31m│[0m Resolved 6 packages in 3.20s                                                 [31m│[0m
+[2025-11-30T19:49:32.552+0000] {docker.py:438} INFO - [31m│[0m Downloading pandas (11.7MiB)                                                 [31m│[0m
+[2025-11-30T19:49:32.552+0000] {docker.py:438} INFO - [31m│[0m Downloading numpy (15.8MiB)                                                  [31m│[0m
+[2025-11-30T19:49:32.553+0000] {docker.py:438} INFO - [31m│[0m   × Failed to download `numpy==2.3.5`                                        [31m│[0m
+[2025-11-30T19:49:32.553+0000] {docker.py:438} INFO - [31m│[0m   ├─▶ Failed to extract archive:                                             [31m│[0m
+[2025-11-30T19:49:32.553+0000] {docker.py:438} INFO - [31m│[0m   │                                                                          [31m│[0m
+[2025-11-30T19:49:32.554+0000] {docker.py:438} INFO - [31m│[0m numpy-2.3.5-cp313-cp313-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl      [31m│[0m
+[2025-11-30T19:49:32.554+0000] {docker.py:438} INFO - [31m│[0m   ├─▶ I/O operation failed during extraction                                 [31m│[0m
+[2025-11-30T19:49:32.554+0000] {docker.py:438} INFO - [31m│[0m   ╰─▶ Failed to download distribution due to network timeout. Try increasing [31m│[0m
+[2025-11-30T19:49:32.555+0000] {docker.py:438} INFO - [31m│[0m       UV_HTTP_TIMEOUT (current value: 30s).                                  [31m│[0m
+[2025-11-30T19:49:32.555+0000] {docker.py:438} INFO - [31m│[0m   help: `numpy` (v2.3.5) was included because `pandas` (v2.3.3) depends on   [31m│[0m
+[2025-11-30T19:49:32.556+0000] {docker.py:438} INFO - [31m│[0m         `numpy`                                                              [31m│[0m
+[2025-11-30T19:49:32.556+0000] {docker.py:438} INFO - [31m│[0m                                                                              [31m│[0m
+[2025-11-30T19:49:32.556+0000] {docker.py:438} INFO - [31m╰─[0m[31m──────────────────────────────[0m[31m Command failed [0m[31m──────────────────────────────[0m[31m─╯[0m
+[2025-11-30T19:49:32.556+0000] {docker.py:438} INFO - 
+[2025-11-30T19:49:32.557+0000] {docker.py:438} INFO - [2m2025-11-30T19:49:32.546307Z[0m [[31m[1merror    [0m] [1mInstallation failed. Command failed.[0m
+[2025-11-30T19:51:59.061+0000] {docker.py:438} INFO - [2m2025-11-30T19:51:59.060343Z[0m [[32m[1minfo     [0m] [1mInstalled extractor 'tap-weatherapi-forecast'[0m
+[2025-11-30T19:53:01.520+0000] {docker.py:438} INFO - [31m╭─[0m[31m────────────────────────────[0m[31m Installation error [0m[31m────────────────────────────[0m[31m─╮[0m
+[2025-11-30T19:53:01.521+0000] {docker.py:438} INFO - [31m│[0m Using Python 3.13.9 environment at: .meltano/utilities/dbt-duckdb/venv       [31m│[0m
+[2025-11-30T19:53:01.525+0000] {docker.py:438} INFO - [31m│[0m Resolved 66 packages in 40.04s                                               [31m│[0m
+[2025-11-30T19:53:01.529+0000] {docker.py:438} INFO - [31m│[0m Downloading pygments (1.2MiB)                                                [31m│[0m
+[2025-11-30T19:53:01.529+0000] {docker.py:438} INFO - [31m│[0m Downloading babel (9.7MiB)                                                   [31m│[0m
+[2025-11-30T19:53:01.530+0000] {docker.py:438} INFO - [31m│[0m Downloading pydantic-core (2.0MiB)                                           [31m│[0m
+[2025-11-30T19:53:01.531+0000] {docker.py:438} INFO - [31m│[0m Downloading duckdb (19.5MiB)                                                 [31m│[0m
+[2025-11-30T19:53:01.531+0000] {docker.py:438} INFO - [31m│[0m Downloading networkx (2.0MiB)                                                [31m│[0m
+[2025-11-30T19:53:01.532+0000] {docker.py:438} INFO - [31m│[0m  Downloaded pygments                                                         [31m│[0m
+[2025-11-30T19:53:01.533+0000] {docker.py:438} INFO - [31m│[0m  Downloaded networkx                                                         [31m│[0m
+[2025-11-30T19:53:01.534+0000] {docker.py:438} INFO - [31m│[0m  Downloaded pydantic-core                                                    [31m│[0m
+[2025-11-30T19:53:01.534+0000] {docker.py:438} INFO - [31m│[0m   × Failed to download `duckdb==1.4.2`                                       [31m│[0m
+[2025-11-30T19:53:01.535+0000] {docker.py:438} INFO - [31m│[0m   ├─▶ Failed to extract archive:                                             [31m│[0m
+[2025-11-30T19:53:01.535+0000] {docker.py:438} INFO - [31m│[0m   │                                                                          [31m│[0m
+[2025-11-30T19:53:01.536+0000] {docker.py:438} INFO - [31m│[0m duckdb-1.4.2-cp313-cp313-manylinux_2_26_x86_64.manylinux_2_28_x86_64.whl     [31m│[0m
+[2025-11-30T19:53:01.536+0000] {docker.py:438} INFO - [31m│[0m   ├─▶ I/O operation failed during extraction                                 [31m│[0m
+[2025-11-30T19:53:01.537+0000] {docker.py:438} INFO - [31m│[0m   ╰─▶ Failed to download distribution due to network timeout. Try increasing [31m│[0m
+[2025-11-30T19:53:01.537+0000] {docker.py:438} INFO - [31m│[0m       UV_HTTP_TIMEOUT (current value: 30s).                                  [31m│[0m
+[2025-11-30T19:53:01.538+0000] {docker.py:438} INFO - [31m│[0m   help: `duckdb` (v1.4.2) was included because `dbt-duckdb` (v1.10.0)        [31m│[0m
+[2025-11-30T19:53:01.538+0000] {docker.py:438} INFO - [31m│[0m depends                                                                      [31m│[0m
+[2025-11-30T19:53:01.539+0000] {docker.py:438} INFO - [31m│[0m         on `duckdb`                                                          [31m│[0m
+[2025-11-30T19:53:01.539+0000] {docker.py:438} INFO - [31m│[0m                                                                              [31m│[0m
+[2025-11-30T19:53:01.540+0000] {docker.py:438} INFO - [31m╰─[0m[31m──────────────────────────────[0m[31m Command failed [0m[31m──────────────────────────────[0m[31m─╯[0m
+[2025-11-30T19:53:01.540+0000] {docker.py:438} INFO - 
+[2025-11-30T19:53:01.541+0000] {docker.py:438} INFO - [2m2025-11-30T19:53:01.517503Z[0m [[31m[1merror    [0m] [1mInstallation failed. Command failed.[0m
+[2025-11-30T19:53:01.541+0000] {docker.py:438} INFO - [2m2025-11-30T19:53:01.519436Z[0m [[33m[1mwarning  [0m] [1mInstalled 3/7 plugins         [0m
+[2025-11-30T19:53:01.542+0000] {docker.py:438} INFO - [2m2025-11-30T19:53:01.519602Z[0m [[33m[1mwarning  [0m] [1mSkipped installing 2/7 plugins[0m
+[2025-11-30T19:53:01.542+0000] {docker.py:438} INFO - [2m2025-11-30T19:53:01.520598Z[0m [[32m[1minfo     [0m] [1mRunning job with name 'dev:tap-rest-api-msdk-to-target-csv' and run ID '019ad64a-5126-77cb-9976-cd10a3251ee9'[0m
+[2025-11-30T19:53:02.309+0000] {docker.py:438} INFO - [2m2025-11-30T19:53:02.307809Z[0m [[32m[1minfo     [0m] [1m/app/.meltano/extractors/tap-rest-api-msdk/venv/lib/python3.13/site-packages/fs/__init__.py:4: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.[0m [36mname[0m=[35mtap-rest-api-msdk[0m
+[2025-11-30T19:53:02.310+0000] {docker.py:438} INFO - [2m2025-11-30T19:53:02.308098Z[0m [[32m[1minfo     [0m] [1m  __import__("pkg_resources").declare_namespace(__name__)  # type: ignore[0m [36mname[0m=[35mtap-rest-api-msdk[0m
+[2025-11-30T19:53:02.837+0000] {docker.py:438} INFO - [2m2025-11-30T19:53:02.836676Z[0m [[32m[1minfo     [0m] [1mtarget-csv v0.2.1, Meltano SDK v0.50.2[0m [36mname[0m=[35mtarget-csv[0m
+[2025-11-30T19:53:02.838+0000] {docker.py:438} INFO - [2m2025-11-30T19:53:02.836985Z[0m [[32m[1minfo     [0m] [1mSkipping parse of env var settings...[0m [36mname[0m=[35mtarget-csv[0m
+[2025-11-30T19:53:03.768+0000] {docker.py:438} INFO - [2m2025-11-30T19:53:03.766999Z[0m [[32m[1minfo     [0m] [1mFound schema in config, not doing discovery.[0m [36mname[0m=[35mtap-rest-api-msdk[0m
+[2025-11-30T19:53:03.770+0000] {docker.py:438} INFO - [2m2025-11-30T19:53:03.769126Z[0m [[32m[1minfo     [0m] [1mBeginning full_table sync of 'weather_daily'...[0m [36mname[0m=[35mtap-rest-api-msdk[0m
+[2025-11-30T19:53:03.771+0000] {docker.py:438} INFO - [2m2025-11-30T19:53:03.769493Z[0m [[32m[1minfo     [0m] [1mTap has custom mapper. Using 1 provided map(s).[0m [36mname[0m=[35mtap-rest-api-msdk[0m
+[2025-11-30T19:53:03.772+0000] {docker.py:438} INFO - [2m2025-11-30T19:53:03.769748Z[0m [[32m[1minfo     [0m] [1mthe next_page_token_jsonpath = $.next_page.[0m [36mname[0m=[35mtap-rest-api-msdk[0m
+[2025-11-30T19:53:03.781+0000] {docker.py:438} INFO - [2m2025-11-30T19:53:03.779742Z[0m [[32m[1minfo     [0m] [1mWriting to destination file '/app/raw/weather_daily.csv'...[0m [36mname[0m=[35mtarget-csv[0m
+[2025-11-30T19:53:09.540+0000] {docker.py:438} INFO - [2m2025-11-30T19:53:09.537286Z[0m [[32m[1minfo     [0m] [1mBacking off _request(...) for 2.7s (requests.exceptions.ConnectionError: HTTPSConnectionPool(host='meteostat.p.rapidapi.com', port=443): Max retries exceeded with url: /point/daily (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x787caa2b9550>: Failed to establish a new connection: [Errno 101] Network is unreachable')))[0m [36mname[0m=[35mtap-rest-api-msdk[0m
+[2025-11-30T19:53:09.541+0000] {docker.py:438} INFO - [2m2025-11-30T19:53:09.537940Z[0m [[32m[1minfo     [0m] [1mBacking off 2.74 seconds after 1 tries calling function <bound method RESTStream._request of <tap_rest_api_msdk.streams.DynamicStream object at 0x787caa55fe00>> with args (<PreparedRequest [GET]>, None) and kwargs {}[0m [36mname[0m=[35mtap-rest-api-msdk[0m
+[2025-11-30T19:53:12.904+0000] {docker.py:438} INFO - [2m2025-11-30T19:53:12.895620Z[0m [[32m[1minfo     [0m] [1mMETRIC: {"type": "timer", "metric": "http_request_duration", "value": 0.611715, "tags": {"stream": "weather_daily", "endpoint": "/point/daily", "http_status_code": 401, "status": "failed"}}[0m [36mname[0m=[35mtap-rest-api-msdk[0m
+[2025-11-30T19:53:12.909+0000] {docker.py:438} INFO - [2m2025-11-30T19:53:12.897782Z[0m [[32m[1minfo     [0m] [1mMETRIC: {"type": "counter", "metric": "http_request_count", "value": 0, "tags": {"stream": "weather_daily", "endpoint": "/point/daily", "pid": 181}}[0m [36mname[0m=[35mtap-rest-api-msdk[0m
+[2025-11-30T19:53:12.916+0000] {docker.py:438} INFO - [2m2025-11-30T19:53:12.900620Z[0m [[32m[1minfo     [0m] [1mMETRIC: {"type": "timer", "metric": "sync_duration", "value": 9.125080585479736, "tags": {"stream": "weather_daily", "pid": 181, "context": {}, "status": "failed"}}[0m [36mname[0m=[35mtap-rest-api-msdk[0m
+[2025-11-30T19:53:12.918+0000] {docker.py:438} INFO - [2m2025-11-30T19:53:12.903210Z[0m [[32m[1minfo     [0m] [1mMETRIC: {"type": "counter", "metric": "record_count", "value": 0, "tags": {"stream": "weather_daily", "pid": 181, "context": {}}}[0m [36mname[0m=[35mtap-rest-api-msdk[0m
+[2025-11-30T19:53:12.925+0000] {docker.py:438} INFO - [2m2025-11-30T19:53:12.922128Z[0m [[32m[1minfo     [0m] [1mAn unhandled error occurred while syncing 'weather_daily'[0m [36mname[0m=[35mtap-rest-api-msdk[0m
+[2025-11-30T19:53:12.927+0000] {docker.py:438} INFO - [2m2025-11-30T19:53:12.922978Z[0m [[32m[1minfo     [0m] [1mTraceback (most recent call last):[0m [36mname[0m=[35mtap-rest-api-msdk[0m
+[2025-11-30T19:53:12.930+0000] {docker.py:438} INFO - [2m2025-11-30T19:53:12.923929Z[0m [[32m[1minfo     [0m] [1m  File "/app/.meltano/extractors/tap-rest-api-msdk/venv/lib/python3.13/site-packages/singer_sdk/streams/core.py", line 1214, in sync[0m [36mname[0m=[35mtap-rest-api-msdk[0m
+[2025-11-30T19:53:12.932+0000] {docker.py:438} INFO - [2m2025-11-30T19:53:12.924844Z[0m [[32m[1minfo     [0m] [1m    for _ in self._sync_records(context=context):[0m [36mname[0m=[35mtap-rest-api-msdk[0m
+[2025-11-30T19:53:12.933+0000] {docker.py:438} INFO - [2m2025-11-30T19:53:12.925908Z[0m [[32m[1minfo     [0m] [1m             ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^[0m [36mname[0m=[35mtap-rest-api-msdk[0m
+[2025-11-30T19:53:12.935+0000] {docker.py:438} INFO - [2m2025-11-30T19:53:12.926747Z[0m [[32m[1minfo     [0m] [1m  File "/app/.meltano/extractors/tap-rest-api-msdk/venv/lib/python3.13/site-packages/singer_sdk/streams/core.py", line 1111, in _sync_records[0m [36mname[0m=[35mtap-rest-api-msdk[0m
+[2025-11-30T19:53:12.936+0000] {docker.py:438} INFO - [2m2025-11-30T19:53:12.928442Z[0m [[32m[1minfo     [0m] [1m    for idx, record_result in enumerate(self.get_records(current_context)):[0m [36mname[0m=[35mtap-rest-api-msdk[0m
+[2025-11-30T19:53:12.938+0000] {docker.py:438} INFO - [2m2025-11-30T19:53:12.930379Z[0m [[32m[1minfo     [0m] [1m                              ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m [36mname[0m=[35mtap-rest-api-msdk[0m
+[2025-11-30T19:53:12.942+0000] {docker.py:438} INFO - [2m2025-11-30T19:53:12.932925Z[0m [[32m[1minfo     [0m] [1m  File "/app/.meltano/extractors/tap-rest-api-msdk/venv/lib/python3.13/site-packages/singer_sdk/streams/rest.py", line 595, in get_records[0m [36mname[0m=[35mtap-rest-api-msdk[0m
+[2025-11-30T19:53:12.945+0000] {docker.py:438} INFO - [2m2025-11-30T19:53:12.933830Z[0m [[32m[1minfo     [0m] [1m    for record in self.request_records(context):[0m [36mname[0m=[35mtap-rest-api-msdk[0m
+[2025-11-30T19:53:12.946+0000] {docker.py:438} INFO - [2m2025-11-30T19:53:12.934978Z[0m [[32m[1minfo     [0m] [1m                  ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^[0m [36mname[0m=[35mtap-rest-api-msdk[0m
+[2025-11-30T19:53:12.948+0000] {docker.py:438} INFO - [2m2025-11-30T19:53:12.935683Z[0m [[32m[1minfo     [0m] [1m  File "/app/.meltano/extractors/tap-rest-api-msdk/venv/lib/python3.13/site-packages/singer_sdk/streams/rest.py", line 407, in request_records[0m [36mname[0m=[35mtap-rest-api-msdk[0m
+[2025-11-30T19:53:12.949+0000] {docker.py:438} INFO - [2m2025-11-30T19:53:12.936307Z[0m [[32m[1minfo     [0m] [1m    resp = decorated_request(prepared_request, context)[0m [36mname[0m=[35mtap-rest-api-msdk[0m
+[2025-11-30T19:53:12.950+0000] {docker.py:438} INFO - [2m2025-11-30T19:53:12.937026Z[0m [[32m[1minfo     [0m] [1m  File "/app/.meltano/extractors/tap-rest-api-msdk/venv/lib/python3.13/site-packages/backoff/_sync.py", line 105, in retry[0m [36mname[0m=[35mtap-rest-api-msdk[0m
+[2025-11-30T19:53:12.951+0000] {docker.py:438} INFO - [2m2025-11-30T19:53:12.937776Z[0m [[32m[1minfo     [0m] [1m    ret = target(*args, **kwargs)[0m [36mname[0m=[35mtap-rest-api-msdk[0m
+[2025-11-30T19:53:12.952+0000] {docker.py:438} INFO - [2m2025-11-30T19:53:12.938378Z[0m [[32m[1minfo     [0m] [1m  File "/app/.meltano/extractors/tap-rest-api-msdk/venv/lib/python3.13/site-packages/singer_sdk/streams/rest.py", line 292, in _request[0m [36mname[0m=[35mtap-rest-api-msdk[0m
+[2025-11-30T19:53:12.953+0000] {docker.py:438} INFO - [2m2025-11-30T19:53:12.938925Z[0m [[32m[1minfo     [0m] [1m    self.validate_response(response)[0m [36mname[0m=[35mtap-rest-api-msdk[0m
+[2025-11-30T19:53:12.954+0000] {docker.py:438} INFO - [2m2025-11-30T19:53:12.939488Z[0m [[32m[1minfo     [0m] [1m    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^[0m [36mname[0m=[35mtap-rest-api-msdk[0m
+[2025-11-30T19:53:12.955+0000] {docker.py:438} INFO - [2m2025-11-30T19:53:12.939921Z[0m [[32m[1minfo     [0m] [1m  File "/app/.meltano/extractors/tap-rest-api-msdk/venv/lib/python3.13/site-packages/singer_sdk/streams/rest.py", line 207, in validate_response[0m [36mname[0m=[35mtap-rest-api-msdk[0m
+[2025-11-30T19:53:12.960+0000] {docker.py:438} INFO - [2m2025-11-30T19:53:12.940450Z[0m [[32m[1minfo     [0m] [1m    raise FatalAPIError(msg)  [0m [36mname[0m=[35mtap-rest-api-msdk[0m
+[2025-11-30T19:53:12.961+0000] {docker.py:438} INFO - [2m2025-11-30T19:53:12.940940Z[0m [[32m[1minfo     [0m] [1msinger_sdk.exceptions.FatalAPIError: 401 Client Error: Unauthorized for path: /point/daily[0m [36mname[0m=[35mtap-rest-api-msdk[0m
+[2025-11-30T19:53:12.963+0000] {docker.py:438} INFO - [2m2025-11-30T19:53:12.941557Z[0m [[32m[1minfo     [0m] [1mTraceback (most recent call last):[0m [36mname[0m=[35mtap-rest-api-msdk[0m
+[2025-11-30T19:53:12.964+0000] {docker.py:438} INFO - [2m2025-11-30T19:53:12.942057Z[0m [[32m[1minfo     [0m] [1m  File "/app/.meltano/extractors/tap-rest-api-msdk/venv/bin/tap-rest-api-msdk", line 10, in <module>[0m [36mname[0m=[35mtap-rest-api-msdk[0m
+[2025-11-30T19:53:12.965+0000] {docker.py:438} INFO - [2m2025-11-30T19:53:12.943755Z[0m [[32m[1minfo     [0m] [1m    sys.exit(TapRestApiMsdk.cli())[0m [36mname[0m=[35mtap-rest-api-msdk[0m
+[2025-11-30T19:53:12.966+0000] {docker.py:438} INFO - [2m2025-11-30T19:53:12.945096Z[0m [[32m[1minfo     [0m] [1m             ~~~~~~~~~~~~~~~~~~^^[0m [36mname[0m=[35mtap-rest-api-msdk[0m
+[2025-11-30T19:53:12.967+0000] {docker.py:438} INFO - [2m2025-11-30T19:53:12.946702Z[0m [[32m[1minfo     [0m] [1m  File "/app/.meltano/extractors/tap-rest-api-msdk/venv/lib/python3.13/site-packages/click/core.py", line 1485, in __call__[0m [36mname[0m=[35mtap-rest-api-msdk[0m
+[2025-11-30T19:53:12.968+0000] {docker.py:438} INFO - [2m2025-11-30T19:53:12.948099Z[0m [[32m[1minfo     [0m] [1m    return self.main(*args, **kwargs)[0m [36mname[0m=[35mtap-rest-api-msdk[0m
+[2025-11-30T19:53:12.968+0000] {docker.py:438} INFO - [2m2025-11-30T19:53:12.949260Z[0m [[32m[1minfo     [0m] [1m           ~~~~~~~~~^^^^^^^^^^^^^^^^^[0m [36mname[0m=[35mtap-rest-api-msdk[0m
+[2025-11-30T19:53:12.969+0000] {docker.py:438} INFO - [2m2025-11-30T19:53:12.950543Z[0m [[32m[1minfo     [0m] [1m  File "/app/.meltano/extractors/tap-rest-api-msdk/venv/lib/python3.13/site-packages/click/core.py", line 1406, in main[0m [36mname[0m=[35mtap-rest-api-msdk[0m
+[2025-11-30T19:53:12.969+0000] {docker.py:438} INFO - [2m2025-11-30T19:53:12.951626Z[0m [[32m[1minfo     [0m] [1m    rv = self.invoke(ctx)     [0m [36mname[0m=[35mtap-rest-api-msdk[0m
+[2025-11-30T19:53:12.970+0000] {docker.py:438} INFO - [2m2025-11-30T19:53:12.952386Z[0m [[32m[1minfo     [0m] [1m  File "/app/.meltano/extractors/tap-rest-api-msdk/venv/lib/python3.13/site-packages/singer_sdk/plugin_base.py", line 82, in invoke[0m [36mname[0m=[35mtap-rest-api-msdk[0m
+[2025-11-30T19:53:12.971+0000] {docker.py:438} INFO - [2m2025-11-30T19:53:12.953000Z[0m [[32m[1minfo     [0m] [1m    return super().invoke(ctx)[0m [36mname[0m=[35mtap-rest-api-msdk[0m
+[2025-11-30T19:53:12.971+0000] {docker.py:438} INFO - [2m2025-11-30T19:53:12.953425Z[0m [[32m[1minfo     [0m] [1m           ~~~~~~~~~~~~~~^^^^^[0m [36mname[0m=[35mtap-rest-api-msdk[0m
+[2025-11-30T19:53:12.972+0000] {docker.py:438} INFO - [2m2025-11-30T19:53:12.953838Z[0m [[32m[1minfo     [0m] [1m  File "/app/.meltano/extractors/tap-rest-api-msdk/venv/lib/python3.13/site-packages/click/core.py", line 1269, in invoke[0m [36mname[0m=[35mtap-rest-api-msdk[0m
+[2025-11-30T19:53:12.972+0000] {docker.py:438} INFO - [2m2025-11-30T19:53:12.954215Z[0m [[32m[1minfo     [0m] [1m    return ctx.invoke(self.callback, **ctx.params)[0m [36mname[0m=[35mtap-rest-api-msdk[0m
+[2025-11-30T19:53:12.973+0000] {docker.py:438} INFO - [2m2025-11-30T19:53:12.954445Z[0m [[32m[1minfo     [0m] [1m           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m [36mname[0m=[35mtap-rest-api-msdk[0m
+[2025-11-30T19:53:12.973+0000] {docker.py:438} INFO - [2m2025-11-30T19:53:12.954641Z[0m [[32m[1minfo     [0m] [1m  File "/app/.meltano/extractors/tap-rest-api-msdk/venv/lib/python3.13/site-packages/click/core.py", line 824, in invoke[0m [36mname[0m=[35mtap-rest-api-msdk[0m
+[2025-11-30T19:53:12.974+0000] {docker.py:438} INFO - [2m2025-11-30T19:53:12.954948Z[0m [[32m[1minfo     [0m] [1m    return callback(*args, **kwargs)[0m [36mname[0m=[35mtap-rest-api-msdk[0m
+[2025-11-30T19:53:12.975+0000] {docker.py:438} INFO - [2m2025-11-30T19:53:12.955504Z[0m [[32m[1minfo     [0m] [1m  File "/app/.meltano/extractors/tap-rest-api-msdk/venv/lib/python3.13/site-packages/singer_sdk/tap_base.py", line 507, in invoke[0m [36mname[0m=[35mtap-rest-api-msdk[0m
+[2025-11-30T19:53:12.975+0000] {docker.py:438} INFO - [2m2025-11-30T19:53:12.955923Z[0m [[32m[1minfo     [0m] [1m    tap.sync_all()            [0m [36mname[0m=[35mtap-rest-api-msdk[0m
+[2025-11-30T19:53:12.976+0000] {docker.py:438} INFO - [2m2025-11-30T19:53:12.956284Z[0m [[32m[1minfo     [0m] [1m    ~~~~~~~~~~~~^^            [0m [36mname[0m=[35mtap-rest-api-msdk[0m
+[2025-11-30T19:53:12.976+0000] {docker.py:438} INFO - [2m2025-11-30T19:53:12.956675Z[0m [[32m[1minfo     [0m] [1m  File "/app/.meltano/extractors/tap-rest-api-msdk/venv/lib/python3.13/site-packages/singer_sdk/tap_base.py", line 466, in sync_all[0m [36mname[0m=[35mtap-rest-api-msdk[0m
+[2025-11-30T19:53:12.977+0000] {docker.py:438} INFO - [2m2025-11-30T19:53:12.957066Z[0m [[32m[1minfo     [0m] [1m    stream.sync()             [0m [36mname[0m=[35mtap-rest-api-msdk[0m
+[2025-11-30T19:53:12.977+0000] {docker.py:438} INFO - [2m2025-11-30T19:53:12.957417Z[0m [[32m[1minfo     [0m] [1m    ~~~~~~~~~~~^^             [0m [36mname[0m=[35mtap-rest-api-msdk[0m
+[2025-11-30T19:53:12.978+0000] {docker.py:438} INFO - [2m2025-11-30T19:53:12.957806Z[0m [[32m[1minfo     [0m] [1m  File "/app/.meltano/extractors/tap-rest-api-msdk/venv/lib/python3.13/site-packages/singer_sdk/streams/core.py", line 1214, in sync[0m [36mname[0m=[35mtap-rest-api-msdk[0m
+[2025-11-30T19:53:12.978+0000] {docker.py:438} INFO - [2m2025-11-30T19:53:12.958169Z[0m [[32m[1minfo     [0m] [1m    for _ in self._sync_records(context=context):[0m [36mname[0m=[35mtap-rest-api-msdk[0m
+[2025-11-30T19:53:12.979+0000] {docker.py:438} INFO - [2m2025-11-30T19:53:12.958498Z[0m [[32m[1minfo     [0m] [1m             ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^[0m [36mname[0m=[35mtap-rest-api-msdk[0m
+[2025-11-30T19:53:12.980+0000] {docker.py:438} INFO - [2m2025-11-30T19:53:12.959053Z[0m [[32m[1minfo     [0m] [1m  File "/app/.meltano/extractors/tap-rest-api-msdk/venv/lib/python3.13/site-packages/singer_sdk/streams/core.py", line 1111, in _sync_records[0m [36mname[0m=[35mtap-rest-api-msdk[0m
+[2025-11-30T19:53:12.980+0000] {docker.py:438} INFO - [2m2025-11-30T19:53:12.959434Z[0m [[32m[1minfo     [0m] [1m    for idx, record_result in enumerate(self.get_records(current_context)):[0m [36mname[0m=[35mtap-rest-api-msdk[0m
+[2025-11-30T19:53:12.981+0000] {docker.py:438} INFO - [2m2025-11-30T19:53:12.959787Z[0m [[32m[1minfo     [0m] [1m                              ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m [36mname[0m=[35mtap-rest-api-msdk[0m
+[2025-11-30T19:53:12.981+0000] {docker.py:438} INFO - [2m2025-11-30T19:53:12.960105Z[0m [[32m[1minfo     [0m] [1m  File "/app/.meltano/extractors/tap-rest-api-msdk/venv/lib/python3.13/site-packages/singer_sdk/streams/rest.py", line 595, in get_records[0m [36mname[0m=[35mtap-rest-api-msdk[0m
+[2025-11-30T19:53:12.982+0000] {docker.py:438} INFO - [2m2025-11-30T19:53:12.960494Z[0m [[32m[1minfo     [0m] [1m    for record in self.request_records(context):[0m [36mname[0m=[35mtap-rest-api-msdk[0m
+[2025-11-30T19:53:12.982+0000] {docker.py:438} INFO - [2m2025-11-30T19:53:12.961162Z[0m [[32m[1minfo     [0m] [1m                  ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^[0m [36mname[0m=[35mtap-rest-api-msdk[0m
+[2025-11-30T19:53:12.983+0000] {docker.py:438} INFO - [2m2025-11-30T19:53:12.961746Z[0m [[32m[1minfo     [0m] [1m  File "/app/.meltano/extractors/tap-rest-api-msdk/venv/lib/python3.13/site-packages/singer_sdk/streams/rest.py", line 407, in request_records[0m [36mname[0m=[35mtap-rest-api-msdk[0m
+[2025-11-30T19:53:12.983+0000] {docker.py:438} INFO - [2m2025-11-30T19:53:12.962094Z[0m [[32m[1minfo     [0m] [1m    resp = decorated_request(prepared_request, context)[0m [36mname[0m=[35mtap-rest-api-msdk[0m
+[2025-11-30T19:53:12.984+0000] {docker.py:438} INFO - [2m2025-11-30T19:53:12.962699Z[0m [[32m[1minfo     [0m] [1m  File "/app/.meltano/extractors/tap-rest-api-msdk/venv/lib/python3.13/site-packages/backoff/_sync.py", line 105, in retry[0m [36mname[0m=[35mtap-rest-api-msdk[0m
+[2025-11-30T19:53:12.984+0000] {docker.py:438} INFO - [2m2025-11-30T19:53:12.963019Z[0m [[32m[1minfo     [0m] [1m    ret = target(*args, **kwargs)[0m [36mname[0m=[35mtap-rest-api-msdk[0m
+[2025-11-30T19:53:12.984+0000] {docker.py:438} INFO - [2m2025-11-30T19:53:12.963558Z[0m [[32m[1minfo     [0m] [1m  File "/app/.meltano/extractors/tap-rest-api-msdk/venv/lib/python3.13/site-packages/singer_sdk/streams/rest.py", line 292, in _request[0m [36mname[0m=[35mtap-rest-api-msdk[0m
+[2025-11-30T19:53:12.985+0000] {docker.py:438} INFO - [2m2025-11-30T19:53:12.964114Z[0m [[32m[1minfo     [0m] [1m    self.validate_response(response)[0m [36mname[0m=[35mtap-rest-api-msdk[0m
+[2025-11-30T19:53:12.985+0000] {docker.py:438} INFO - [2m2025-11-30T19:53:12.964811Z[0m [[32m[1minfo     [0m] [1m    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^[0m [36mname[0m=[35mtap-rest-api-msdk[0m
+[2025-11-30T19:53:12.986+0000] {docker.py:438} INFO - [2m2025-11-30T19:53:12.965304Z[0m [[32m[1minfo     [0m] [1m  File "/app/.meltano/extractors/tap-rest-api-msdk/venv/lib/python3.13/site-packages/singer_sdk/streams/rest.py", line 207, in validate_response[0m [36mname[0m=[35mtap-rest-api-msdk[0m
+[2025-11-30T19:53:12.986+0000] {docker.py:438} INFO - [2m2025-11-30T19:53:12.965692Z[0m [[32m[1minfo     [0m] [1m    raise FatalAPIError(msg)  [0m [36mname[0m=[35mtap-rest-api-msdk[0m
+[2025-11-30T19:53:12.986+0000] {docker.py:438} INFO - [2m2025-11-30T19:53:12.966239Z[0m [[32m[1minfo     [0m] [1msinger_sdk.exceptions.FatalAPIError: 401 Client Error: Unauthorized for path: /point/daily[0m [36mname[0m=[35mtap-rest-api-msdk[0m
+[2025-11-30T19:53:13.132+0000] {docker.py:438} INFO - [2m2025-11-30T19:53:13.130188Z[0m [[32m[1minfo     [0m] [1mReader 'target-csv' completed processing 2 lines of input (1 schemas, 0 records, 0 batch manifests, 1 state messages, 0 activate version messages).[0m [36mname[0m=[35mtarget-csv[0m
+[2025-11-30T19:53:13.157+0000] {docker.py:438} INFO - [2m2025-11-30T19:53:13.156216Z[0m [[32m[1minfo     [0m] [1mMETRIC                        [0m [36mmetric_name[0m=[35mrecord_count[0m [36mmetric_value[0m=[35m0[0m [36mname[0m=[35mtarget-csv[0m
+[2025-11-30T19:53:13.255+0000] {docker.py:438} INFO - [2m2025-11-30T19:53:13.253918Z[0m [[31m[1merror    [0m] [1mExtractor failed              [0m
+[2025-11-30T19:53:13.256+0000] {docker.py:438} INFO - [2m2025-11-30T19:53:13.254492Z[0m [[31m[1merror    [0m] [1mBlock run completed           [0m
+[2025-11-30T19:53:13.259+0000] {docker.py:438} INFO - [2m2025-11-30T19:53:13.257735Z[0m [[32m[1minfo     [0m] [1mRun completed                 [0m
+[2025-11-30T19:53:15.584+0000] {taskinstance.py:3310} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 767, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 733, in _execute_callable
+    return ExecutionCallableRunner(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 406, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/docker/operators/docker.py", line 513, in execute
+    return self._run_image()
+           ^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/docker/operators/docker.py", line 384, in _run_image
+    return self._run_image_with_mounts(self.mounts, add_tmp_variable=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/docker/operators/docker.py", line 446, in _run_image_with_mounts
+    raise DockerContainerFailedException(f"Docker container failed: {result!r}", logs=log_lines)
+airflow.providers.docker.exceptions.DockerContainerFailedException: Docker container failed: {'StatusCode': 1}
+[2025-11-30T19:53:15.598+0000] {taskinstance.py:1225} INFO - Marking task as UP_FOR_RETRY. dag_id=meltano_irrigation_etl, task_id=run_meltano_etl, run_id=manual__2025-11-30T19:42:47.843705+00:00, execution_date=20251130T194247, start_date=20251130T194248, end_date=20251130T195315
+[2025-11-30T19:53:15.629+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-11-30T19:53:15.631+0000] {standard_task_runner.py:124} ERROR - Failed to execute job 3 for task run_meltano_etl (Docker container failed: {'StatusCode': 1}; 198)
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py", line 117, in _start_by_fork
+    ret = args.func(args, dag=self.dag)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/cli_config.py", line 49, in command
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/cli.py", line 115, in wrapper
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/commands/task_command.py", line 483, in task_run
+    task_return_code = _run_task_by_selected_method(args, _dag, ti)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/commands/task_command.py", line 256, in _run_task_by_selected_method
+    return _run_raw_task(args, ti)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/commands/task_command.py", line 341, in _run_raw_task
+    return ti._run_raw_task(
+           ^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/session.py", line 97, in wrapper
+    return func(*args, session=session, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 3004, in _run_raw_task
+    return _run_raw_task(
+           ^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 273, in _run_raw_task
+    TaskInstance._execute_task_with_callbacks(
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 3158, in _execute_task_with_callbacks
+    result = self._execute_task(context, task_orig)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 3182, in _execute_task
+    return _execute_task(self, context, task_orig)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 767, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 733, in _execute_callable
+    return ExecutionCallableRunner(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 406, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/docker/operators/docker.py", line 513, in execute
+    return self._run_image()
+           ^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/docker/operators/docker.py", line 384, in _run_image
+    return self._run_image_with_mounts(self.mounts, add_tmp_variable=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/docker/operators/docker.py", line 446, in _run_image_with_mounts
+    raise DockerContainerFailedException(f"Docker container failed: {result!r}", logs=log_lines)
+airflow.providers.docker.exceptions.DockerContainerFailedException: Docker container failed: {'StatusCode': 1}
+[2025-11-30T19:53:15.675+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 1
+[2025-11-30T19:53:15.713+0000] {taskinstance.py:3900} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-11-30T19:53:15.717+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

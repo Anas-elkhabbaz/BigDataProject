@@ -1,0 +1,43 @@
+services:
+  etl:
+    build: .
+    container_name: irrigation_etl
+    command: >
+      meltano --environment=dev run extract_clean_build
+    working_dir: /app
+    environment:
+      - DBT_PROFILES_DIR=/app/transform/profiles/duckdb
+      - DBT_TARGET_PATH=/app/transform/target
+      - MELTANO_PROJECT_ROOT=/app   # optionnel mais propre
+    env_file:
+      - .env      # pour tes API keys, etc.
+    volumes:
+      - .:/app
+
+
+  dashboard:
+    build: .
+    container_name: irrigation_dashboard
+    command: >
+      streamlit run app.py
+      --server.port=8501
+      --server.address=0.0.0.0
+    working_dir: /app
+    environment:
+      - MELTANO_PROJECT_ROOT=/app
+    env_file:
+      - .env          # ⬅ optionnel mais utile si un jour le dashboard lit des secrets
+    volumes:
+      - .:/app
+    ports:
+      - "8501:8501"
+  
+    dbt-docs:
+      image: anaselkhabbaz/irrigation-etl:latest
+      command: >
+        bash -lc "cd /app &&
+        meltano invoke dbt-duckdb:docs-generate &&
+        meltano invoke dbt-duckdb:docs-serve -- --host 0.0.0.0 --port 8080"
+      ports:
+        - "8081:8080"
+

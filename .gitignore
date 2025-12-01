@@ -1,0 +1,37 @@
+# Environment variables (contains secrets!)
+.env
+
+# Python
+.venv/
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Meltano
+.meltano/
+.meltano.db
+
+# dbt
+transform/target/
+transform/dbt_packages/
+transform/logs/
+transform/profiles/duckdb/profiles.yml.bak
+
+# Data files
+raw/*.csv
+warehouse/*.duckdb
+warehouse/*.duckdb.wal
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db

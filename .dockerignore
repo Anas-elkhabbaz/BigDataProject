@@ -1,0 +1,13 @@
+# Ne pas envoyer les environnements virtuels et caches à Docker
+.venv/
+.meltano/
+__pycache__/
+*.pyc
+*.log
+
+# Optionnel : des trucs qui ne servent pas dans l'image
+.git/
+.gitignore
+.env
+*.db
+*.duckdb
